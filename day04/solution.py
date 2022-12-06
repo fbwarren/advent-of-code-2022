@@ -1,3 +1,15 @@
+pairs = []
+with open("input.txt") as input:
+    pair = input.readline()
+    while pair:
+        pair = pair.split(',')
+        first = ''.join(pair[0]).split('-')
+        second = ''.join(pair[1]).split('-')
+        first = [int(first[0]), int(first[1])]
+        second = [int(second[0]), int(second[1])]
+        pairs.append([first, second])
+        pair = input.readline()
+
 def silver(pairs):
     output = 0
 
@@ -19,17 +31,5 @@ def gold(pairs):
             output += 1
 
     return output
-
-pairs = []
-with open("input.txt") as input:
-    pair = input.readline()
-    while pair:
-        pair = pair.split(',')
-        first = ''.join(pair[0]).split('-')
-        second = ''.join(pair[1]).split('-')
-        first = [int(first[0]), int(first[1])]
-        second = [int(second[0]), int(second[1])]
-        pairs.append([first, second])
-        pair = input.readline()
 
 print(f"{silver(pairs)}, {gold(pairs)}")
