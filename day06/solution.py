@@ -1,13 +1,9 @@
-from collections import deque
+line = open("input.txt").readline()
 
-with open("input.txt") as input:
-    msg = input.readline()
-    found = False
+def solve(n):
+    for i in range(len(line)):
+        if len(set(line[i:i+n])) == n:
+            return i+n
 
-    for i in range(len(msg)):
-        if len(set(msg[i:i+4])) == 4 and not found:
-            print('four: {}'.format(i+4))
-            found = True
-        if len(set(msg[i:i+14])) == 14:
-            print('fourteen: {}'.format(i+14))
-            break
+print("Silver: %s\nGold: %s" % (solve(4), solve(14)))
+
